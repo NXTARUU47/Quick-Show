@@ -2,6 +2,7 @@ import React from "react";
 import { dummyShowsData } from "../assets/assets";
 import MovieCard from "../Component/MovieCard";
 import BlurCircle from "../Component/BlurCircle";
+import Loading from "../Component/Loading"
 function Favorite() {
   return dummyShowsData.length > 0 ? (
     <div className="relative my-40 mb-60 px-6 md:px-16 lg:px-40 xl:px-44 overflow-hidden min-h-[80vh]">
@@ -16,7 +17,7 @@ function Favorite() {
     </div>
   ) : (
     <div className="flex flex-col items-center justify-center h-screen" >
-      <h1 className="text-3xl font-bold text-center">No Movie Available</h1>
+      <h1 className="text-3xl font-bold text-center">No Movie Available</h1>  
     </div> 
   );
 }
