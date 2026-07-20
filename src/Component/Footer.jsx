@@ -8,7 +8,7 @@ function Footer() {
         <div className="md:max-w-96">
           <img
             alt=""
-            class="h-8"
+            className="h-8"
             src={assets.logo}
           />
           <p className="mt-6 text-sm">

@@ -1,9 +1,10 @@
-
-const BlurCircle = ({top="auto",bottom="auto", left="auto",right="auto",}) => {
+function BlurCircle({ top, left, right, className = "" }) {
   return (
-    <div className="absolute z-50 h-58 aspect-square rounded-full bg-primary/30 blur-3xl" style={{top:top,left:left,right:right,bottom:bottom}}>
-      
-    </div>
-  )
-  }
-export default BlurCircle
+    <div
+      className={`absolute rounded-full blur-3xl bg-primary/30 w-72 h-72 ${className}`}
+      style={{ top, left, right }}
+    />
+  );
+}
+
+export default BlurCircle;
