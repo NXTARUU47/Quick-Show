@@ -6,7 +6,17 @@ import { toast } from "react-hot-toast";
 
 function DateSelect({ dateTime = {}, movieId, id = "dateSelect" }) {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(null);
+
+  // Declare `dates` BEFORE using it in useState
+  const dates = Array.from({ length: 4 }, (_, i) => {
+    const date = new Date();
+    date.setDate(date.getDate() + i);
+    return date;
+  });
+
+  const [selected, setSelected] = useState(
+    dates[0].toISOString().split("T")[0]
+  );
 
   const onBookHandler = () => {
     if (!selected) {
@@ -41,6 +51,7 @@ function DateSelect({ dateTime = {}, movieId, id = "dateSelect" }) {
           right="-100px"
           className="pointer-events-none -z-10"
         />
+
         <div className="flex-1 w-full">
           <p className="text-base sm:text-lg font-semibold">Choose Date</p>
 
@@ -52,26 +63,30 @@ function DateSelect({ dateTime = {}, movieId, id = "dateSelect" }) {
 
             <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-4 md:flex md:flex-wrap gap-2 sm:gap-4 flex-1 place-items-center sm:place-items-stretch">
               {Object.keys(dateTime).length > 0 ? (
-                Object.keys(dateTime).map((date) => (
-                  <button
-                    type="button"
-                    key={date}
-                    onClick={() => setSelected(date)}
-                    className={`flex flex-col items-center justify-center h-11 w-11 sm:h-14 sm:w-14 rounded-lg transition cursor-pointer text-sm sm:text-base ${
-                      selected === date
-                        ? "bg-primary text-white"
-                        : "border border-primary/70 hover:bg-primary/20"
-                    }`}
-                  >
-                    <span>{new Date(date).getDate()}</span>
+                dates.map((date) => {
+                  const dateString = date.toISOString().split("T")[0];
 
-                    <span className="text-[10px] sm:text-xs">
-                      {new Date(date).toLocaleDateString("en-US", {
-                        month: "short",
-                      })}
-                    </span>
-                  </button>
-                ))
+                  return (
+                    <button
+                      key={dateString}
+                      type="button"
+                      onClick={() => setSelected(dateString)}
+                      className={`flex flex-col items-center justify-center h-11 w-11 sm:h-14 sm:w-14 rounded-lg transition cursor-pointer ${
+                        selected === dateString
+                          ? "bg-primary text-white"
+                          : "border border-primary/70 hover:bg-primary/20"
+                      }`}
+                    >
+                      <span>{date.getDate()}</span>
+
+                      <span className="text-[10px] sm:text-xs">
+                        {date.toLocaleDateString("en-US", {
+                          month: "short",
+                        })}
+                      </span>
+                    </button>
+                  );
+                })
               ) : (
                 <p className="text-gray-400 text-sm sm:text-base col-span-3">
                   No dates available
