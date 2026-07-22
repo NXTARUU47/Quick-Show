@@ -44,7 +44,6 @@ function AdminNavBar() {
         </button>
       </div>
 
-      {/* Mobile dropdown menu */}
       {isOpen && (
         <div className='md:hidden flex flex-col gap-1 px-4 pb-4 border-t border-gray-300/30'>
           {navLinks.map((link) => (
