@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import BlurCircle from "./BlurCircle";
 import { dummyShowsData } from "../assets/assets";
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 
 function FeaturedSection() {
   const navigate = useNavigate();
@@ -12,16 +13,16 @@ function FeaturedSection() {
       <div className="relative flex items-center justify-between pt-20 pb-10">
         <BlurCircle top="0" right="-80px" />
         <p className="text-gray-300 font-medium text-lg">Now Showing</p>
-        <button
-          className="cursor-pointer group flex items-center gap-2 text-sm
-         text-gray-300"
-          onClick={() => navigate("/movies")}
+        <Link
+          to="/movies"
+          onClick={() => scrollTo(0, 0)}
+          className="cursor-pointer group flex items-center gap-2 text-sm text-gray-300"
         >
           View All
           <ArrowRight className="group-hover:translate-x-0.5 transition w-4.5 h-4.5" />
-        </button>
+        </Link>
       </div>
-     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {dummyShowsData.slice(0, 4).map((show) => (
           <MovieCard key={show._id} movie={show} />
         ))}

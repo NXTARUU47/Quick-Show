@@ -59,56 +59,62 @@ function AddShows() {
     <>
       <Title text1="Add" text2="Shows" />
 
-      <p className="mt-10 text-lg font-medium">Now Playing Movies</p>
+      <p className="mt-6 sm:mt-10 text-base sm:text-lg font-medium px-2 sm:px-0">
+        Now Playing Movies
+      </p>
 
-      <div className="overflow-x-auto pb-4 no-scrollbar">
-        <div className="flex gap-4 w-max">
+      <div className="overflow-x-auto pb-4 no-scrollbar px-2 sm:px-0">
+        <div className="flex gap-3 sm:gap-4 w-max">
           {nowPlayingMovies.map((movie) => (
             <div
               key={movie.id}
               onClick={() => setSelectedMovie(movie.id)}
-              className="relative w-40 cursor-pointer hover:-translate-y-1 transition"
+              className="relative w-28 sm:w-36 md:w-40 cursor-pointer hover:-translate-y-1 transition"
             >
-              <div className="relative rounded-lg overflow-hidden mt-5">
+              <div className="relative rounded-lg overflow-hidden mt-4 sm:mt-5">
                 <img
                   src={movie.poster_path}
                   alt={movie.title}
-                  className="w-full h-60 object-cover"
+                  className="w-full h-40 sm:h-52 md:h-60 object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/70 flex items-center justify-between p-2 text-sm">
+                <div className="absolute bottom-0 left-0 w-full bg-black/70 flex items-center justify-between p-1.5 sm:p-2 text-xs sm:text-sm">
                   <p className="flex items-center gap-1 text-gray-300">
-                    <StarIcon className="w-4 h-4 text-primary fill-primary" />
+                    <StarIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary fill-primary shrink-0" />
                     {movie.vote_average.toFixed(1)}
                   </p>
 
-                  <p className="text-gray-300">
+                  <p className="text-gray-300 truncate">
                     {KConverter(movie.vote_count)} Votes
                   </p>
                 </div>
               </div>
 
               {selectedMovie === movie.id && (
-                <div className="absolute top-7 right-2 bg-primary rounded flex items-center justify-center w-6 h-6">
-                  <CheckIcon className="w-4 h-4 text-white" />
+                <div className="absolute top-6 sm:top-7 right-2 bg-primary rounded flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">
+                  <CheckIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                 </div>
               )}
 
-              <p className="font-medium truncate mt-2">{movie.title}</p>
+              <p className="font-medium truncate mt-2 text-sm sm:text-base">
+                {movie.title}
+              </p>
 
-              <p className="text-gray-400 text-sm">{movie.release_date}</p>
+              <p className="text-gray-400 text-xs sm:text-sm">
+                {movie.release_date}
+              </p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Show Price */}
-      <div className="mt-8">
+      <div className="mt-6 sm:mt-8 px-2 sm:px-0">
         <label className="block text-sm font-medium mb-2">
           Show Price
         </label>
 
-        <div className="inline-flex items-center gap-2 border border-gray-600 rounded-md px-3 py-2">
+        <div className="inline-flex items-center gap-2 border border-gray-600 rounded-md px-3 py-2 w-full sm:w-auto">
           <span>{currency}</span>
 
           <input
@@ -117,28 +123,28 @@ function AddShows() {
             placeholder="Enter Show Price"
             value={showPrice}
             onChange={(e) => setShowPrice(e.target.value)}
-            className="bg-transparent outline-none"
+            className="bg-transparent outline-none w-full sm:w-auto"
           />
         </div>
       </div>
 
       {/* Date Time */}
-      <div className="mt-6">
+      <div className="mt-5 sm:mt-6 px-2 sm:px-0">
         <label className="block text-sm font-medium mb-2">
           Select Date and Time
         </label>
 
-        <div className="inline-flex items-center gap-5 border border-gray-600 rounded-lg p-1 pl-3">
+        <div className="flex flex-col sm:inline-flex sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 border border-gray-600 rounded-lg p-2 sm:p-1 sm:pl-3 w-full sm:w-auto">
           <input
             type="datetime-local"
             value={dateTimeInput}
             onChange={(e) => setDateTimeInput(e.target.value)}
-            className="bg-transparent outline-none"
+            className="bg-transparent outline-none w-full sm:w-auto"
           />
 
           <button
             onClick={handleDateTimeAdd}
-            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition cursor-pointer"
+            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition cursor-pointer w-full sm:w-auto"
           >
             Add Time
           </button>
@@ -147,21 +153,21 @@ function AddShows() {
 
       {/* Selected Times */}
       {Object.keys(dateTimeSelection).length > 0 && (
-        <div className="mt-6">
-          <h2 className="text-lg font-medium mb-3">
+        <div className="mt-5 sm:mt-6 px-2 sm:px-0">
+          <h2 className="text-base sm:text-lg font-medium mb-3">
             Selected Date-Time
           </h2>
 
           <ul className="space-y-4">
             {Object.entries(dateTimeSelection).map(([date, times]) => (
               <li key={date}>
-                <p className="font-semibold">{date}</p>
+                <p className="font-semibold text-sm sm:text-base">{date}</p>
 
                 <div className="flex flex-wrap gap-2 mt-2">
                   {times.map((time) => (
                     <div
                       key={time}
-                      className="flex items-center gap-2 border border-primary rounded px-3 py-1"
+                      className="flex items-center gap-2 border border-primary rounded px-2.5 sm:px-3 py-1 text-sm sm:text-base"
                     >
                       <span>{time}</span>
 
@@ -180,12 +186,11 @@ function AddShows() {
           </ul>
         </div>
       )}
-      
-    <button className="bg-primary text-white px-8  py-2 mt-6 rounded hover:bg-primary/90 transition-all cursor-pointer">
-      Add Show
-    </button>
-    </>
 
+      <button className="w-full sm:w-auto bg-primary text-white px-8 py-2.5 sm:py-2 mt-6 rounded hover:bg-primary/90 transition-all cursor-pointer mx-2 sm:mx-0">
+        Add Show
+      </button>
+    </>
   ) : (
     <Loading />
   );

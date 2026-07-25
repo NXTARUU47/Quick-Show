@@ -4,16 +4,16 @@ import googlePlay from './googlePlay.svg'
 import appStore from './appStore.svg'
 import screenImage from './screenImage.svg'
 import profile from './profile.png'
-
+import odysseyLogo from './odysseyLogo.png'
 export const assets = {
     logo,
     marvelLogo,
     googlePlay,
     appStore,
     screenImage,
-    profile
+    profile,
+    odysseyLogo
 }
-
 export const dummyTrailers = [
     {
         image: "https://img.youtube.com/vi/WpW36ldAqnM/maxresdefault.jpg",
@@ -196,6 +196,17 @@ export const dummyShowsData = [
     }
 ]
 
+
+
+
+
+
+
+
+
+
+
+
 const createDummyDateTimeData = () => {
   const data = {};
 
@@ -342,3 +353,7 @@ export const dummyBookingData = [
         "isPaid": true,
     },
 ]
+
+
+
+
