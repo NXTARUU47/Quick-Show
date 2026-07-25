@@ -6,6 +6,8 @@ import Movies from "./Pages/Movies";
 import MovieDetalis from "./Pages/MovieDetalis";
 import SeatLayout from "./Pages/SeatLayout";
 import MyBooking from "./Pages/MyBooking";
+import Releases from "./Pages/Releases";
+import Theatre from "./Pages/Theatre";
 import Favorite from "./Pages/Favorite";
 import Footer from "./Component/Footer";
 import { Toaster } from "react-hot-toast";
@@ -17,10 +19,12 @@ import ListShows from "./Pages/admin/ListShows";
 
 function App() {
   const isAdminRoute = useLocation().pathname.startsWith("/admin");
+
   return (
     <>
       <Toaster />
       {!isAdminRoute && <NavBar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -28,12 +32,16 @@ function App() {
         <Route path="/movies/:id/:date" element={<SeatLayout />} />
         <Route path="/my-bookings" element={<MyBooking />} />
         <Route path="/favorite" element={<Favorite />} />
+        <Route path="/releases" element={<Releases />} />
+        <Route path="/theaters" element={<Theatre />} />
         <Route path="/admin/*" element={<Layout />}>
-          <Route index element={<Dashboard/>} />
-          <Route path="Add-shows" element={<AddShows/>} />
-         <Route path="list-bookings" element={<ListBookings />} />          <Route path="list-shows" element={<ListShows/>} />
+          <Route index element={<Dashboard />} />
+          <Route path="add-shows" element={<AddShows />} />
+          <Route path="list-bookings" element={<ListBookings />} />
+          <Route path="list-shows" element={<ListShows />} />
         </Route>
       </Routes>
+
       {!isAdminRoute && <Footer />}
     </>
   );

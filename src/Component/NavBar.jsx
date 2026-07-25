@@ -39,8 +39,8 @@ function NavBar() {
         <div className="flex items-center gap-8 px-8 py-3 rounded-full backdrop-blur bg-white/10 border border-gray-300/20">
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
-          <Link to="/">Theaters</Link>
-          <Link to="/">Releases</Link>
+          <Link to="/theaters">Theaters</Link>
+          <Link to="/releases">Releases</Link>
           <Link to="/favorite">Favorites</Link>
         </div>
       </div>
@@ -102,11 +102,11 @@ function NavBar() {
           Movies
         </Link>
 
-        <Link to="/" onClick={handleNavigation}>
+        <Link to="/theaters" onClick={handleNavigation}>
           Theaters
         </Link>
 
-        <Link to="/" onClick={handleNavigation}>
+        <Link to="/releases" onClick={handleNavigation}>
           Releases
         </Link>
 
