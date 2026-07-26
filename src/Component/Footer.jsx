@@ -110,7 +110,7 @@ function Footer() {
 
   {/* Bottom */}
 
-  <div className="border-t border-gray-800 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center text-sm text-gray-500">
+  <div className="border-t border-gray-800 py-6 flex items-center justify-center gap-4 text-center text-sm text-gray-500">
 
     <p>
       © {new Date().getFullYear()}{" "}
@@ -120,21 +120,7 @@ function Footer() {
       . All rights reserved.
     </p>
 
-    <div className="flex flex-wrap justify-center gap-5">
-      <Link
-        to="/privacy"
-        className="hover:text-primary transition"
-      >
-        Privacy Policy
-      </Link>
-
-      <Link
-        to="/terms"
-        className="hover:text-primary transition"
-      >
-        Terms of Service
-      </Link>
-    </div>
+    
 
   </div>
 

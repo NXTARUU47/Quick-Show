@@ -17,7 +17,7 @@ import AddShows from "./Pages/admin/AddShows";
 import ListBookings from "./Pages/admin/ListBookings";
 import ListShows from "./Pages/admin/ListShows";
 import ScrollToTop from "./Component/ScrollToTop";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
+// import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/releases" element={<Releases />} />
         <Route path="/theaters" element={<Theatre />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
+        {/* <Route path="/privacy" element={<PrivacyPolicy />} /> */}
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/admin/*" element={<Layout />}>
           <Route index element={<Dashboard />} />
